@@ -145,7 +145,7 @@ function Index() {
           {drivers.map(([n, s, p]) => (
             <a key={n} href={APP} className="w-56 shrink-0 overflow-hidden rounded-md border bg-card text-center">
               <div className="relative h-24"><img src={cockpit} alt="" loading="lazy" className="h-full w-full object-cover opacity-30" /></div>
-              <div className="-mt-10 relative mx-auto flex h-20 w-20 items-center justify-center rounded-full border-4 border-card bg-secondary font-display text-2xl font-black italic">{n[0]}</div>
+              <div className="-mt-10 relative mx-auto flex h-20 w-20 items-center justify-center rounded-full border-4 border-card bg-secondary font-display text-2xl font-black italic">{n.charAt(0)}</div>
               <div className="mt-2 font-semibold">{n}</div>
               <div className="m-3 grid grid-cols-2 gap-2">
                 <div className="rounded bg-secondary py-2"><div className="font-semibold">{s}</div><div className="text-[10px] uppercase text-muted-foreground">Sessions</div></div>
