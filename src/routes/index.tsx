@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 import lmuLogo from "@/assets/lmu.svg.asset.json";
-import iracingLogo from "@/assets/iracing.png.asset.json";
+import iracingLogo from "@/assets/iracing-logo.png.asset.json";
 import f1Logo from "@/assets/f1-25.png.asset.json";
 import heroBg from "@/assets/hero-bg.jpg.asset.json";
 
