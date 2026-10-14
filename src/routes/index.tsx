@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 import lmuLogo from "@/assets/lmu.svg.asset.json";
 import iracingLogo from "@/assets/iracing-white-figure.png.asset.json";
 import f1Logo from "@/assets/f1-25.png.asset.json";
-import heroBg from "@/assets/hero-huracan.jpg.asset.json";
+import heroBg from "@/assets/hero-car.png.asset.json";
 
 const APP = "https://apexsimtracker.com";
 const u = (p: string) => `${APP}${p}`;
@@ -79,7 +79,7 @@ function Index() {
         </header>
 
         <section className="relative overflow-hidden">
-                    <img src={heroBg.url} alt="" className="absolute inset-x-0 top-0 h-[calc(100%-8rem)] sm:h-[calc(100%-10rem)] w-full object-cover object-[36%_80%] sm:object-[center_80%]" />
+                    <img src={heroBg.url} alt="" className="absolute inset-x-0 top-0 h-[calc(100%-8rem)] sm:h-[calc(100%-10rem)] w-full object-cover object-[50%_80%] sm:object-[center_80%]" />
           <div className="absolute inset-0 bg-hero-fade" />
           <div className="relative overflow-hidden border-b py-3">
             <div className="animate-marquee flex w-max gap-10 whitespace-nowrap">
