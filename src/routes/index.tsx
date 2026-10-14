@@ -1,7 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type { ReactNode } from "react";
-import hero from "@/assets/track.jpg";
-import cockpit from "@/assets/hero.jpg";
 import lmuLogo from "@/assets/lmu.svg.asset.json";
 import iracingLogo from "@/assets/iracing.png.asset.json";
 import f1Logo from "@/assets/f1-25.png.asset.json";
@@ -80,8 +78,7 @@ function Index() {
         </header>
 
         <section className="relative overflow-hidden">
-          <img src={hero} alt="GT3 car cornering on a wet track at dusk" className="absolute inset-0 h-full w-full object-cover" width={1280} height={720} />
-          <div className="absolute inset-0 bg-hero-fade" />
+                    <div className="absolute inset-0 bg-hero-fade" />
           <div className="relative overflow-hidden border-b py-3">
             <div className="animate-marquee flex w-max gap-10 whitespace-nowrap">
               {[...ticker, ...ticker].map((t, i) => (
@@ -104,8 +101,7 @@ function Index() {
           <div className="relative grid gap-5 px-6 pb-8 sm:grid-cols-3 lg:px-8">
             {sims.map((s, i) => (
               <a key={s.name} href={u("/leaderboards")} className="relative h-32 overflow-hidden rounded-md border bg-card">
-                <img src={i % 2 ? cockpit : hero} alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover opacity-40" style={{ objectPosition: `${i * 40}% 50%` }} />
-                <span className="relative flex h-full items-center justify-center p-6">
+                                <span className="relative flex h-full items-center justify-center p-6">
                   <img src={s.logo} alt={s.name} loading="lazy" className={`max-h-16 max-w-[75%] object-contain ${s.white ? "brightness-0 invert" : ""} ${s.plate ? "rounded-md bg-foreground px-4 py-3" : ""}`} />
                 </span>
               </a>
@@ -117,7 +113,7 @@ function Index() {
           {hub.map(([t, d, tag], i) => (
             <a key={t} href={u("/signup")} className="w-72 shrink-0 overflow-hidden rounded-md border bg-card">
               <div className="relative h-32">
-                <img src={i % 2 ? cockpit : hero} alt="" loading="lazy" className="h-full w-full object-cover opacity-60" style={{ objectPosition: `${(i * 23) % 100}% 50%` }} />
+                <div className="h-full w-full bg-muted" />
                 <div className="absolute inset-0 bg-card-fade" />
                 <span className="absolute left-3 top-3 rounded bg-primary px-2 py-0.5 text-[10px] font-bold uppercase text-primary-foreground">{tag}</span>
               </div>
@@ -133,7 +129,7 @@ function Index() {
           {explore.map(([t, d, p], i) => (
             <a key={t} href={u(p)} className="w-80 shrink-0 sm:w-auto sm:flex-1">
               <div className="h-44 overflow-hidden rounded-md border bg-muted">
-                <img src={i % 2 ? hero : cockpit} alt="" loading="lazy" className="h-full w-full object-cover opacity-70" style={{ objectPosition: `${i * 45}% 50%` }} />
+                
               </div>
               <div className="mt-3 flex gap-3">
                 <span className="mt-1 h-9 w-9 shrink-0 rounded-full border-2 border-primary" />
@@ -161,7 +157,7 @@ function Index() {
                 <a href={u("/pricing")} className="rounded-md border border-input px-5 py-2.5 font-semibold">View pricing</a>
               </div>
             </div>
-            <img src={cockpit} alt="Sim rig with telemetry on screen" loading="lazy" className="rounded-md border" width={1920} height={1088} />
+            <div className="aspect-video rounded-md border bg-muted" />
           </div>
         </section>
 
