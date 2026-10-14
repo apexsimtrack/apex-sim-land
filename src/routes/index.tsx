@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import lmuLogo from "@/assets/lmu.svg.asset.json";
 import iracingLogo from "@/assets/iracing.png.asset.json";
 import f1Logo from "@/assets/f1-25.png.asset.json";
+import heroBg from "@/assets/hero-bg.jpg.asset.json";
 
 const APP = "https://apexsimtracker.com";
 const u = (p: string) => `${APP}${p}`;
@@ -78,7 +79,8 @@ function Index() {
         </header>
 
         <section className="relative overflow-hidden">
-                    <div className="absolute inset-0 bg-hero-fade" />
+                    <img src={heroBg.url} alt="" className="absolute inset-0 h-full w-full object-cover" />
+          <div className="absolute inset-0 bg-hero-fade" />
           <div className="relative overflow-hidden border-b py-3">
             <div className="animate-marquee flex w-max gap-10 whitespace-nowrap">
               {[...ticker, ...ticker].map((t, i) => (
