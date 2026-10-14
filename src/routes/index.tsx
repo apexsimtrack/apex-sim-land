@@ -4,14 +4,15 @@ import hero from "@/assets/track.jpg";
 import cockpit from "@/assets/hero.jpg";
 
 const APP = "https://apexsimtracker.com";
+const u = (p: string) => `${APP}${p}`;
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Apex — Sim Racing Performance Tracker" },
-      { name: "description", content: "Log sessions, analyse telemetry, climb leaderboards and get coached with Apex Analysis — one hub for every sim you race." },
-      { property: "og:title", content: "Apex — Sim Racing Performance Tracker" },
-      { property: "og:description", content: "Session logging, telemetry, leaderboards, challenges and coaching for every sim you race." },
+      { title: "Apex — Sim Racing Performance Hub" },
+      { name: "description", content: "Activity feed, session stats, leaderboards, challenges and community for iRacing, F1 25 and Le Mans Ultimate. Automatic telemetry with Apex Pro." },
+      { property: "og:title", content: "Apex — Sim Racing Performance Hub" },
+      { property: "og:description", content: "Centralize your sim racing data: sessions, leaderboards, challenges and community in one hub." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -19,27 +20,25 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const stats = [["Every", "sim supported"], ["Lap-by-lap", "telemetry"], ["Weekly", "challenges"], ["AI", "coaching"]];
-const sims = ["Le Mans Ultimate", "ACC", "iRacing", "AC EVO", "Gran Turismo 7", "Assetto Corsa", "AMS2", "F1 25"];
-const challenges = [
-  ["Spa Hotlap", "ACC · GT3", "3d", "Hotlap"],
-  ["Road Atlanta Consistency", "iRacing · MX-5", "5d", "10 laps"],
-  ["Le Mans Night Stint", "LMU · Hypercar", "6d", "Stint"],
-  ["Nordschleife Sprint", "AC EVO · 992 Cup", "2d", "Hotlap"],
-  ["Monza Braking Test", "ACC · GT3", "4d", "Sectors"],
-  ["Suzuka Clean Lap", "GT7 · Gr.3", "1d", "Hotlap"],
+const ticker = ["Activity feed & goals", "Sessions & stats", "Leaderboards", "Challenges", "Community", "Apex Agent", "iRacing", "F1 25", "Le Mans Ultimate"];
+const sims = ["iRacing", "F1 25", "Le Mans Ultimate"];
+const hub: [string, string, string][] = [
+  ["Activity feed & goals", "See your sessions and weekly targets alongside the community — your home base when you're logged in.", "Logged in"],
+  ["Sessions & stats", "Log performance and spot trends instead of scattering notes across spreadsheets.", "Track"],
+  ["Leaderboards", "Compare laps and climb the ranks — see where you stand against the field.", "Compete"],
+  ["Challenges", "Enter events, qualify, and compete in structured sim racing challenges.", "Compete"],
+  ["Community", "Discuss setups, events, and technique with other racers — jump into discussions anytime.", "Connect"],
+  ["Agent & Apex Pro", "Apex Agent uploads F1 25 telemetry automatically on Mac, Windows, and Linux — included with Apex Pro.", "Pro"],
 ];
-const features = [
-  ["Session logging", "Every lap, car and track captured automatically across your sims."],
-  ["Telemetry", "Throttle, brake and speed traces overlaid lap against lap."],
-  ["Apex Analysis", "Coaching that tells you which corner to fix next — and how."],
-  ["Leaderboards", "Rank against friends and the community on every combo."],
+const explore: [string, string, string][] = [
+  ["Community", "Discussions on setups, events, and technique", "/community"],
+  ["Challenges", "Browse events and see who is competing", "/challenges"],
+  ["Leaderboards", "Lap times and rankings across sims", "/leaderboards"],
 ];
-const drivers: [string, string, string][] = [["You", "128", "42"], ["Driver 2", "96", "31"], ["Driver 3", "210", "77"], ["Driver 4", "64", "19"], ["Driver 5", "143", "50"], ["Driver 6", "88", "27"]];
+const pro = ["Automatic telemetry uploads", "Apex Agent access", "Full analytics & comparisons", "Future Pro-only challenges"];
+const nav: [string, string, string][] = [["⌂", "Home", "/"], ["☰", "Community", "/community"], ["⚑", "Challenges", "/challenges"], ["▲", "Ranks", "/leaderboards"]];
 
-const nav = [["⌂", "Home"], ["⚑", "Race"], ["▤", "Data"], ["★", "Coach"]];
-
-function Section({ title, sub, children }: { title: string; sub: string; children: ReactNode }) {
+function Section({ title, sub, href, children }: { title: string; sub: string; href?: string; children: ReactNode }) {
   return (
     <section className="py-12">
       <div className="flex items-end justify-between gap-4 px-6 lg:px-8">
@@ -47,7 +46,7 @@ function Section({ title, sub, children }: { title: string; sub: string; childre
           <h2 className="font-sans text-2xl font-bold">{title}</h2>
           <p className="mt-1 text-muted-foreground">{sub}</p>
         </div>
-        <a href={APP} className="shrink-0 rounded-md bg-secondary px-4 py-2 text-sm font-semibold text-primary">View All</a>
+        {href && <a href={u(href)} className="shrink-0 rounded-md bg-secondary px-4 py-2 text-sm font-semibold text-primary">View All</a>}
       </div>
       <div className="no-scrollbar mt-6 flex gap-5 overflow-x-auto px-6 lg:px-8">{children}</div>
     </section>
@@ -58,8 +57,8 @@ function Index() {
   return (
     <div className="min-h-screen">
       <aside className="fixed inset-y-0 left-0 z-40 hidden w-16 flex-col items-center gap-2 bg-card py-3 md:flex">
-        {nav.map(([i, l], idx) => (
-          <a key={l} href={idx ? APP : "/"} className={`flex w-12 flex-col items-center rounded-md py-2 text-[10px] font-semibold uppercase ${idx === 0 ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground"}`}>
+        {nav.map(([i, l, p], idx) => (
+          <a key={l} href={idx ? u(p) : "/"} className={`flex w-14 flex-col items-center rounded-md py-2 text-[9px] font-semibold uppercase ${idx === 0 ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground"}`}>
             <span className="text-lg leading-none">{i}</span>{l}
           </a>
         ))}
@@ -68,88 +67,80 @@ function Index() {
       <div className="md:pl-16">
         <header className="sticky top-0 z-30 flex h-16 items-center gap-6 bg-card px-4">
           <a href="/" className="font-display text-3xl font-black italic tracking-tight">APEX<span className="text-primary">.</span></a>
-          <form action={APP} className="mx-auto hidden w-full max-w-xl overflow-hidden rounded-md border bg-background sm:flex">
-            <input placeholder="Search tracks, cars and drivers" className="flex-1 bg-transparent px-4 py-2 text-sm outline-none placeholder:text-muted-foreground" />
-            <button className="bg-secondary px-4 text-sm">⌕</button>
-          </form>
-          <a href={APP} className="ml-auto rounded-md bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground sm:ml-0">Login · Register</a>
+          <nav className="mx-auto hidden gap-8 text-sm font-medium text-muted-foreground sm:flex">
+            <a href={u("/community")} className="hover:text-foreground">Community</a>
+            <a href={u("/challenges")} className="hover:text-foreground">Challenges</a>
+            <a href={u("/leaderboards")} className="hover:text-foreground">Leaderboards</a>
+            <a href={u("/pricing")} className="hover:text-foreground">Pricing</a>
+          </nav>
+          <div className="ml-auto flex overflow-hidden rounded-md bg-primary text-sm font-semibold text-primary-foreground sm:ml-0">
+            <a href={u("/login")} className="px-3 py-2 hover:opacity-90">Login</a>
+            <span className="py-2 opacity-60">·</span>
+            <a href={u("/signup")} className="px-3 py-2 hover:opacity-90">Register</a>
+          </div>
         </header>
 
         <section className="relative overflow-hidden">
           <img src={hero} alt="GT3 car cornering on a wet track at dusk" className="absolute inset-0 h-full w-full object-cover" width={1280} height={720} />
           <div className="absolute inset-0 bg-hero-fade" />
           <div className="relative overflow-hidden border-b py-3">
-            <div className="animate-marquee flex w-max gap-12 whitespace-nowrap">
-              {[...stats, ...stats, ...stats, ...stats].map(([a, b], i) => (
-                <span key={i} className="text-sm"><b className="text-base">{a}</b> <span className="text-xs uppercase tracking-widest text-muted-foreground">{b}</span> <span className="ml-10 text-muted-foreground">•</span></span>
+            <div className="animate-marquee flex w-max gap-10 whitespace-nowrap">
+              {[...ticker, ...ticker].map((t, i) => (
+                <span key={i} className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">{t} <span className="ml-10 text-primary">•</span></span>
               ))}
             </div>
           </div>
           <div className="relative mx-auto max-w-3xl px-6 py-28 text-center">
             <h1 className="font-display text-5xl font-black uppercase italic leading-[0.9] sm:text-7xl">
-              Every lap, tracked.<br /><span className="text-primary">Every tenth, found.</span>
+              Centralize your<br /><span className="text-primary">sim racing data.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-xl text-lg text-foreground/85">
-              The performance hub for sim racers. Log every session, analyse your telemetry, take on challenges and get coached by Apex Analysis — across every major sim.
+              Your activity feed, weekly goals, sessions and stats — plus leaderboards, challenges and community. One hub for every sim you run.
             </p>
-            <a href={APP} className="mt-8 inline-block rounded-md bg-primary px-6 py-3 font-semibold text-primary-foreground shadow-glow hover:opacity-90">Register Now</a>
+            <div className="mt-8 flex flex-wrap justify-center gap-3">
+              <a href={u("/signup")} className="rounded-md bg-primary px-6 py-3 font-semibold text-primary-foreground shadow-glow hover:opacity-90">Sign up free</a>
+              <a href={u("/challenges")} className="rounded-md border border-input bg-background/40 px-6 py-3 font-semibold hover:bg-secondary">Explore without signing in</a>
+            </div>
           </div>
-          <div className="no-scrollbar relative flex gap-5 overflow-x-auto px-6 pb-8 lg:px-8">
+          <div className="relative grid gap-5 px-6 pb-8 sm:grid-cols-3 lg:px-8">
             {sims.map((s, i) => (
-              <a key={s} href={APP} className="relative h-32 w-52 shrink-0 overflow-hidden rounded-md border bg-card">
-                <img src={i % 2 ? cockpit : hero} alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover opacity-40" style={{ objectPosition: `${(i * 15) % 100}% 50%` }} />
-                <span className="relative flex h-full items-center justify-center px-3 text-center font-display text-2xl font-black uppercase italic">{s}</span>
+              <a key={s} href={u("/leaderboards")} className="relative h-32 overflow-hidden rounded-md border bg-card">
+                <img src={i % 2 ? cockpit : hero} alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover opacity-40" style={{ objectPosition: `${i * 40}% 50%` }} />
+                <span className="relative flex h-full items-center justify-center px-3 text-center font-display text-3xl font-black uppercase italic">{s}</span>
               </a>
             ))}
           </div>
         </section>
 
-        <Section title="⚑ Live Challenges" sub="Jump into a weekly challenge and see how you stack up against the community.">
-          {challenges.map(([t, c, e, k], i) => (
-            <a key={t} href={APP} className="w-72 shrink-0 overflow-hidden rounded-md border bg-card">
-              <div className="relative h-28">
+        <Section title="⚑ Everything in one hub" sub="Sign in for your activity feed, weekly goals, uploads and personalised stats.">
+          {hub.map(([t, d, tag], i) => (
+            <a key={t} href={u("/signup")} className="w-72 shrink-0 overflow-hidden rounded-md border bg-card">
+              <div className="relative h-32">
                 <img src={i % 2 ? cockpit : hero} alt="" loading="lazy" className="h-full w-full object-cover opacity-60" style={{ objectPosition: `${(i * 23) % 100}% 50%` }} />
                 <div className="absolute inset-0 bg-card-fade" />
+                <span className="absolute left-3 top-3 rounded bg-primary px-2 py-0.5 text-[10px] font-bold uppercase text-primary-foreground">{tag}</span>
               </div>
-              <div className="px-4 pb-4 text-center">
-                <h3 className="font-semibold">{t}</h3>
-                <p className="mt-1 text-sm text-muted-foreground">{c}</p>
-                <div className="mt-4 grid grid-cols-2 gap-2">
-                  <div className="rounded bg-secondary py-2"><div className="font-semibold">{k}</div><div className="text-[10px] uppercase text-muted-foreground">Type</div></div>
-                  <div className="rounded bg-secondary py-2"><div className="font-semibold">{e}</div><div className="text-[10px] uppercase text-muted-foreground">Ends in</div></div>
-                </div>
+              <div className="px-5 pb-5">
+                <h3 className="font-sans text-lg font-semibold">{t}</h3>
+                <p className="mt-2 text-sm text-muted-foreground">{d}</p>
               </div>
             </a>
           ))}
         </Section>
 
-        <Section title="▤ Built for faster laps" sub="Everything you need to understand your driving, in one place.">
-          {features.map(([t, d], i) => (
-            <div key={t} className="w-80 shrink-0">
+        <Section title="☰ Explore without signing in" sub="Browse community, challenges and leaderboards — create an account when you're ready to track your own data.">
+          {explore.map(([t, d, p], i) => (
+            <a key={t} href={u(p)} className="w-80 shrink-0 sm:w-auto sm:flex-1">
               <div className="h-44 overflow-hidden rounded-md border bg-muted">
-                <img src={i % 2 ? hero : cockpit} alt="" loading="lazy" className="h-full w-full object-cover opacity-70" style={{ objectPosition: `${(i * 30) % 100}% 50%` }} />
+                <img src={i % 2 ? hero : cockpit} alt="" loading="lazy" className="h-full w-full object-cover opacity-70" style={{ objectPosition: `${i * 45}% 50%` }} />
               </div>
               <div className="mt-3 flex gap-3">
                 <span className="mt-1 h-9 w-9 shrink-0 rounded-full border-2 border-primary" />
                 <div>
                   <div className="text-xs text-muted-foreground">Apex</div>
-                  <h3 className="font-semibold">{t}</h3>
+                  <h3 className="font-sans font-semibold">{t}</h3>
                   <p className="text-sm text-muted-foreground">{d}</p>
                 </div>
-              </div>
-            </div>
-          ))}
-        </Section>
-
-        <Section title="★ Community Drivers" sub="Example driver profiles — follow drivers and compare your laps.">
-          {drivers.map(([n, s, p]) => (
-            <a key={n} href={APP} className="w-56 shrink-0 overflow-hidden rounded-md border bg-card text-center">
-              <div className="relative h-24"><img src={cockpit} alt="" loading="lazy" className="h-full w-full object-cover opacity-30" /></div>
-              <div className="-mt-10 relative mx-auto flex h-20 w-20 items-center justify-center rounded-full border-4 border-card bg-secondary font-display text-2xl font-black italic">{n.charAt(0)}</div>
-              <div className="mt-2 font-semibold">{n}</div>
-              <div className="m-3 grid grid-cols-2 gap-2">
-                <div className="rounded bg-secondary py-2"><div className="font-semibold">{s}</div><div className="text-[10px] uppercase text-muted-foreground">Sessions</div></div>
-                <div className="rounded bg-secondary py-2"><div className="font-semibold">{p}</div><div className="text-[10px] uppercase text-muted-foreground">PBs</div></div>
               </div>
             </a>
           ))}
@@ -158,11 +149,47 @@ function Index() {
         <section className="px-6 py-12 lg:px-8">
           <div className="mx-auto grid max-w-6xl items-center gap-10 overflow-hidden rounded-lg bg-secondary p-10 lg:grid-cols-2">
             <div>
-              <h2 className="font-sans text-2xl font-bold">Stop guessing. Start improving.</h2>
-              <p className="mt-4 text-muted-foreground">Ditch the spreadsheets and scattered screenshots. Apex logs every session automatically, shows exactly where you lose time and tells you what to work on next.</p>
-              <a href={APP} className="mt-6 inline-block rounded-md bg-primary px-5 py-2.5 font-semibold text-primary-foreground">Create your account</a>
+              <div className="text-xs font-semibold uppercase tracking-widest text-primary">Apex Pro</div>
+              <h2 className="mt-2 font-sans text-2xl font-bold">Automatic telemetry. Full analytics.</h2>
+              <p className="mt-4 text-muted-foreground">Apex Agent uploads your F1 25 telemetry automatically on Mac, Windows and Linux — unlock it after you join.</p>
+              <ul className="mt-5 space-y-2">
+                {pro.map((p) => <li key={p} className="flex gap-2"><span className="text-primary">✓</span>{p}</li>)}
+              </ul>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <a href={u("/signup")} className="rounded-md bg-primary px-5 py-2.5 font-semibold text-primary-foreground">Get started</a>
+                <a href={u("/pricing")} className="rounded-md border border-input px-5 py-2.5 font-semibold">View pricing</a>
+              </div>
             </div>
             <img src={cockpit} alt="Sim rig with telemetry on screen" loading="lazy" className="rounded-md border" width={1920} height={1088} />
+          </div>
+        </section>
+
+        <section className="px-6 py-12 lg:px-8">
+          <div className="mx-auto flex max-w-6xl flex-col items-center gap-8 rounded-lg border bg-card p-10 md:flex-row">
+            <div className="flex h-28 w-28 shrink-0 items-center justify-center rounded-full border-4 border-primary bg-secondary font-display text-4xl font-black italic">HC</div>
+            <div className="flex-1 text-center md:text-left">
+              <div className="text-xs font-semibold uppercase tracking-widest text-primary">The founder</div>
+              <h2 className="mt-1 font-sans text-2xl font-bold">Hugo Cook</h2>
+              <p className="text-sm text-muted-foreground">Founder · Professional racing driver</p>
+              <p className="mt-3 text-muted-foreground">British GT with Barwell Motorsport. Apex exists because sim prep deserved the same seriousness as real-world racing.</p>
+              <div className="mt-4 flex flex-wrap justify-center gap-2 md:justify-start">
+                {["British GT Championship", "Barwell Motorsport", "#63 Lamborghini Huracán GT3 Evo2"].map((b) => (
+                  <span key={b} className="rounded bg-secondary px-3 py-1 text-xs font-semibold">{b}</span>
+                ))}
+              </div>
+            </div>
+            <a href={u("/about")} className="shrink-0 rounded-md bg-secondary px-5 py-2.5 font-semibold text-primary">Read our story</a>
+          </div>
+        </section>
+
+        <section className="px-6 py-12 lg:px-8">
+          <div className="mx-auto max-w-6xl rounded-lg bg-primary p-12 text-center text-primary-foreground">
+            <h2 className="font-display text-4xl font-black uppercase italic sm:text-5xl">Ready to centralize your sim racing data?</h2>
+            <p className="mx-auto mt-3 max-w-md opacity-90">Join Apex and turn scattered sessions into a clear picture of your pace.</p>
+            <div className="mt-8 flex flex-wrap justify-center gap-3">
+              <a href={u("/signup")} className="rounded-md bg-background px-6 py-3 font-semibold text-foreground">Sign up free</a>
+              <a href={u("/faq")} className="rounded-md border border-primary-foreground/40 px-6 py-3 font-semibold">Read the FAQ</a>
+            </div>
           </div>
         </section>
 
@@ -170,12 +197,16 @@ function Index() {
           <div className="mx-auto grid max-w-6xl gap-10 px-6 py-14 sm:grid-cols-2 lg:grid-cols-4">
             <div>
               <div className="font-display text-3xl font-black italic">APEX<span className="text-primary">.</span></div>
-              <p className="mt-3 text-muted-foreground">Track, analyse and improve your sim racing — across every sim.</p>
+              <p className="mt-3 text-muted-foreground">One hub for every sim you run.</p>
             </div>
-            {[["Apex", ["Home", "Features", "Login / Register"]], ["Tools", ["Session logging", "Telemetry", "Apex Analysis"]], ["Community", ["Leaderboards", "Challenges", "Drivers"]]].map(([h, ls]) => (
-              <div key={h as string}>
+            {([
+              ["Apex", [["About", "/about"], ["Pricing", "/pricing"], ["FAQ", "/faq"], ["Contact", "/contact"]]],
+              ["Explore", [["Community", "/community"], ["Challenges", "/challenges"], ["Leaderboards", "/leaderboards"]]],
+              ["Legal", [["Terms", "/terms-and-conditions"], ["Privacy", "/privacy-policy"], ["Cookies", "/cookie-policy"], ["EULA", "/eula"]]],
+            ] as [string, [string, string][]][]).map(([h, ls]) => (
+              <div key={h}>
                 <h3 className="font-sans font-semibold text-muted-foreground">{h}</h3>
-                <ul className="mt-4 space-y-2 text-sm">{(ls as string[]).map((l) => <li key={l}><a href={APP} className="hover:text-primary">{l}</a></li>)}</ul>
+                <ul className="mt-4 space-y-2 text-sm">{ls.map(([l, p]) => <li key={l}><a href={u(p)} className="hover:text-primary">{l}</a></li>)}</ul>
               </div>
             ))}
           </div>
