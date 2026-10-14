@@ -2,6 +2,9 @@ import { createFileRoute } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 import hero from "@/assets/track.jpg";
 import cockpit from "@/assets/hero.jpg";
+import lmuLogo from "@/assets/lmu.svg.asset.json";
+import iracingLogo from "@/assets/iracing.png.asset.json";
+import f1Logo from "@/assets/f1-25.png.asset.json";
 
 const APP = "https://apexsimtracker.com";
 const u = (p: string) => `${APP}${p}`;
@@ -21,7 +24,11 @@ export const Route = createFileRoute("/")({
 });
 
 const ticker = ["Activity feed & goals", "Sessions & stats", "Leaderboards", "Challenges", "Community", "Apex Agent", "iRacing", "F1 25", "Le Mans Ultimate"];
-const sims = ["iRacing", "F1 25", "Le Mans Ultimate"];
+const sims: { name: string; logo: string; white: boolean; plate?: boolean }[] = [
+  { name: "iRacing", logo: iracingLogo.url, white: false, plate: true },
+  { name: "F1 25", logo: f1Logo.url, white: false },
+  { name: "Le Mans Ultimate", logo: lmuLogo.url, white: false },
+];
 const hub: [string, string, string][] = [
   ["Activity feed & goals", "See your sessions and weekly targets alongside the community — your home base when you're logged in.", "Logged in"],
   ["Sessions & stats", "Log performance and spot trends instead of scattering notes across spreadsheets.", "Track"],
@@ -96,9 +103,11 @@ function Index() {
           </div>
           <div className="relative grid gap-5 px-6 pb-8 sm:grid-cols-3 lg:px-8">
             {sims.map((s, i) => (
-              <a key={s} href={u("/leaderboards")} className="relative h-32 overflow-hidden rounded-md border bg-card">
+              <a key={s.name} href={u("/leaderboards")} className="relative h-32 overflow-hidden rounded-md border bg-card">
                 <img src={i % 2 ? cockpit : hero} alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover opacity-40" style={{ objectPosition: `${i * 40}% 50%` }} />
-                <span className="relative flex h-full items-center justify-center px-3 text-center font-display text-3xl font-black uppercase italic">{s}</span>
+                <span className="relative flex h-full items-center justify-center p-6">
+                  <img src={s.logo} alt={s.name} loading="lazy" className={`max-h-16 max-w-[75%] object-contain ${s.white ? "brightness-0 invert" : ""} ${s.plate ? "rounded-md bg-foreground px-4 py-3" : ""}`} />
+                </span>
               </a>
             ))}
           </div>
