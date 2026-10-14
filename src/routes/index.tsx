@@ -35,7 +35,7 @@ const features = [
   ["Apex Analysis", "Coaching that tells you which corner to fix next — and how."],
   ["Leaderboards", "Rank against friends and the community on every combo."],
 ];
-const drivers = [["You", "128", "42"], ["Driver 2", "96", "31"], ["Driver 3", "210", "77"], ["Driver 4", "64", "19"], ["Driver 5", "143", "50"], ["Driver 6", "88", "27"]];
+const drivers: [string, string, string][] = [["You", "128", "42"], ["Driver 2", "96", "31"], ["Driver 3", "210", "77"], ["Driver 4", "64", "19"], ["Driver 5", "143", "50"], ["Driver 6", "88", "27"]];
 
 const nav = [["⌂", "Home"], ["⚑", "Race"], ["▤", "Data"], ["★", "Coach"]];
 
