@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 import lmuLogo from "@/assets/lmu.svg.asset.json";
 import iracingLogo from "@/assets/iracing-white-figure.png.asset.json";
 import f1Logo from "@/assets/f1-25.png.asset.json";
-import heroBg from "@/assets/hero-lambo.jpg.asset.json";
+import heroBg from "@/assets/hero-huracan.jpg.asset.json";
 
 const APP = "https://apexsimtracker.com";
 const u = (p: string) => `${APP}${p}`;
