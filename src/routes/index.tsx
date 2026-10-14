@@ -79,7 +79,7 @@ function Index() {
         </header>
 
         <section className="relative overflow-hidden">
-                    <img src={heroBg.url} alt="" className="absolute inset-0 h-full w-full object-cover object-[center_75%]" />
+                    <img src={heroBg.url} alt="" className="absolute inset-x-0 top-0 h-[calc(100%-26rem)] sm:h-[calc(100%-10rem)] w-full object-cover object-bottom" />
           <div className="absolute inset-0 bg-hero-fade" />
           <div className="relative overflow-hidden border-b py-3">
             <div className="animate-marquee flex w-max gap-10 whitespace-nowrap">
