@@ -56,27 +56,19 @@ function Section({ title, sub, href, children }: { title: string; sub: string; h
 function Index() {
   return (
     <div className="min-h-screen">
-      <aside className="fixed inset-y-0 left-0 z-40 hidden w-16 flex-col items-center gap-2 bg-card py-3 md:flex">
-        {nav.map(([i, l, p], idx) => (
-          <a key={l} href={idx ? u(p) : "/"} className={`flex w-14 flex-col items-center rounded-md py-2 text-[9px] font-semibold uppercase ${idx === 0 ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground"}`}>
-            <span className="text-lg leading-none">{i}</span>{l}
+      <div>
+        <header className="sticky top-0 z-30 flex h-16 items-center gap-8 border-b bg-background/95 px-6 backdrop-blur">
+          <a href="/" className="flex shrink-0 items-center">
+            <img src={u("/icon-512.png")} alt="Apex" width={36} height={36} className="h-9 w-9" />
           </a>
-        ))}
-      </aside>
-
-      <div className="md:pl-16">
-        <header className="sticky top-0 z-30 flex h-16 items-center gap-6 bg-card px-4">
-          <a href="/" className="font-display text-3xl font-black italic tracking-tight">APEX<span className="text-primary">.</span></a>
-          <nav className="mx-auto hidden gap-8 text-sm font-medium text-muted-foreground sm:flex">
-            <a href={u("/community")} className="hover:text-foreground">Community</a>
-            <a href={u("/challenges")} className="hover:text-foreground">Challenges</a>
-            <a href={u("/leaderboards")} className="hover:text-foreground">Leaderboards</a>
-            <a href={u("/pricing")} className="hover:text-foreground">Pricing</a>
+          <nav className="hidden h-full items-center gap-8 text-xs font-semibold uppercase tracking-[0.15em] text-muted-foreground md:flex">
+            {nav.map(([, l, p], idx) => (
+              <a key={l} href={idx ? u(p) : "/"} className={`flex h-full items-center border-b-2 ${idx === 0 ? "border-primary text-primary" : "border-transparent hover:text-foreground"}`}>{l}</a>
+            ))}
           </nav>
-          <div className="ml-auto flex overflow-hidden rounded-md bg-primary text-sm font-semibold text-primary-foreground sm:ml-0">
-            <a href={u("/login")} className="px-3 py-2 hover:opacity-90">Login</a>
-            <span className="py-2 opacity-60">·</span>
-            <a href={u("/signup")} className="px-3 py-2 hover:opacity-90">Register</a>
+          <div className="ml-auto flex items-center gap-2">
+            <a href={u("/login")} className="rounded-lg border bg-secondary px-3 py-2 text-sm font-medium hover:bg-muted">Sign in</a>
+            <a href={u("/signup")} className="rounded-lg bg-primary px-3 py-2 text-sm font-bold uppercase tracking-wider text-primary-foreground hover:opacity-90">Get started</a>
           </div>
         </header>
 
