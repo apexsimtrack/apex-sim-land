@@ -36,7 +36,7 @@ const explore: [string, string, string][] = [
   ["Leaderboards", "Lap times and rankings across sims", "/leaderboards"],
 ];
 const pro = ["Automatic telemetry uploads", "Apex Agent access", "Full analytics & comparisons", "Future Pro-only challenges"];
-const nav: [string, string, string][] = [["⌂", "Home", "/"], ["☰", "Community", "/community"], ["⚑", "Challenges", "/challenges"], ["▲", "Ranks", "/leaderboards"]];
+const nav: [string, string, string][] = [["", "Home", "/"], ["", "Leaderboards", "/leaderboards"], ["", "Challenges", "/challenges"], ["", "Community", "/community"], ["", "Pricing", "/pricing"]];
 
 function Section({ title, sub, href, children }: { title: string; sub: string; href?: string; children: ReactNode }) {
   return (
