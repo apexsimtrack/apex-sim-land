@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 import lmuLogo from "@/assets/lmu.svg.asset.json";
-import iracingLogo from "@/assets/iracing-logo.png.asset.json";
+import iracingLogo from "@/assets/iracing-clear.png.asset.json";
 import f1Logo from "@/assets/f1-25.png.asset.json";
 import heroBg from "@/assets/hero-bg.jpg.asset.json";
 
@@ -24,7 +24,7 @@ export const Route = createFileRoute("/")({
 
 const ticker = ["Activity feed & goals", "Sessions & stats", "Leaderboards", "Challenges", "Community", "Apex Agent", "iRacing", "F1 25", "Le Mans Ultimate"];
 const sims: { name: string; logo: string; white: boolean; plate?: boolean }[] = [
-  { name: "iRacing", logo: iracingLogo.url, white: false, plate: true },
+  { name: "iRacing", logo: iracingLogo.url, white: false },
   { name: "F1 25", logo: f1Logo.url, white: false },
   { name: "Le Mans Ultimate", logo: lmuLogo.url, white: false },
 ];
