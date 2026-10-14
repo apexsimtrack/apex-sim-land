@@ -79,7 +79,7 @@ function Index() {
         </header>
 
         <section className="relative overflow-hidden">
-                    <img src={heroBg.url} alt="" className="absolute inset-x-0 top-0 h-[calc(100%-26rem)] sm:h-[calc(100%-10rem)] w-full object-cover object-[15%_80%] sm:object-[center_80%]" />
+                    <img src={heroBg.url} alt="" className="absolute inset-x-0 top-0 h-[calc(100%-8rem)] sm:h-[calc(100%-10rem)] w-full object-cover object-[15%_80%] sm:object-[center_80%]" />
           <div className="absolute inset-0 bg-hero-fade" />
           <div className="relative overflow-hidden border-b py-3">
             <div className="animate-marquee flex w-max gap-10 whitespace-nowrap">
@@ -100,11 +100,11 @@ function Index() {
               <a href={u("/challenges")} className="rounded-md border border-input bg-background/40 px-6 py-3 font-semibold hover:bg-secondary">Explore without signing in</a>
             </div>
           </div>
-          <div className="relative grid gap-5 px-6 pb-8 sm:grid-cols-3 lg:px-8">
+          <div className="relative grid grid-cols-3 gap-2 px-3 pb-8 sm:gap-5 sm:px-6 lg:px-8">
             {sims.map((s, i) => (
-              <a key={s.name} href={u("/leaderboards")} className="relative h-32 overflow-hidden rounded-md border bg-card">
-                                <span className="relative flex h-full items-center justify-center p-6">
-                  <img src={s.logo} alt={s.name} loading="lazy" className={`${s.big ? "max-h-20 max-w-[92%]" : "max-h-16 max-w-[75%]"} object-contain ${s.white ? "brightness-0 invert" : ""} ${s.plate ? "rounded-md bg-foreground px-4 py-3" : ""}`} />
+              <a key={s.name} href={u("/leaderboards")} className="relative h-20 overflow-hidden rounded-md border bg-card sm:h-32">
+                                <span className="relative flex h-full items-center justify-center p-2 sm:p-6">
+                  <img src={s.logo} alt={s.name} loading="lazy" className={`${s.big ? "max-h-12 max-w-[95%] sm:max-h-20 sm:max-w-[92%]" : "max-h-9 max-w-[85%] sm:max-h-16 sm:max-w-[75%]"} object-contain ${s.white ? "brightness-0 invert" : ""} ${s.plate ? "rounded-md bg-foreground px-4 py-3" : ""}`} />
                 </span>
               </a>
             ))}
