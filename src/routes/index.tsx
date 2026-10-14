@@ -23,8 +23,8 @@ export const Route = createFileRoute("/")({
 });
 
 const ticker = ["Activity feed & goals", "Sessions & stats", "Leaderboards", "Challenges", "Community", "Apex Agent", "iRacing", "F1 25", "Le Mans Ultimate"];
-const sims: { name: string; logo: string; white: boolean; plate?: boolean }[] = [
-  { name: "iRacing", logo: iracingLogo.url, white: false },
+const sims: { name: string; logo: string; white: boolean; plate?: boolean; big?: boolean }[] = [
+  { name: "iRacing", logo: iracingLogo.url, white: false, big: true },
   { name: "F1 25", logo: f1Logo.url, white: false },
   { name: "Le Mans Ultimate", logo: lmuLogo.url, white: false },
 ];
@@ -104,7 +104,7 @@ function Index() {
             {sims.map((s, i) => (
               <a key={s.name} href={u("/leaderboards")} className="relative h-32 overflow-hidden rounded-md border bg-card">
                                 <span className="relative flex h-full items-center justify-center p-6">
-                  <img src={s.logo} alt={s.name} loading="lazy" className={`max-h-16 max-w-[75%] object-contain ${s.white ? "brightness-0 invert" : ""} ${s.plate ? "rounded-md bg-foreground px-4 py-3" : ""}`} />
+                  <img src={s.logo} alt={s.name} loading="lazy" className={`${s.big ? "max-h-20 max-w-[92%]" : "max-h-16 max-w-[75%]"} object-contain ${s.white ? "brightness-0 invert" : ""} ${s.plate ? "rounded-md bg-foreground px-4 py-3" : ""}`} />
                 </span>
               </a>
             ))}
