@@ -49,7 +49,7 @@ function Index() {
       </header>
 
       <section className="relative flex min-h-[92vh] items-end overflow-hidden">
-        <img src={hero} alt="Sim racing cockpit lit in red" className="absolute inset-0 h-full w-full object-cover" width={1920} height={1080} />
+        <img src={hero} alt="Sim racing cockpit lit in red" className="absolute inset-0 h-full w-full object-cover" width={1920} height={1088} />
         <div className="absolute inset-0 bg-hero-fade" />
         <div className="relative mx-auto w-full max-w-7xl px-6 pb-24">
           <p className="mb-5 font-display text-sm uppercase tracking-[0.3em] text-primary">Sim racing performance hub</p>
