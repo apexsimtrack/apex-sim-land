@@ -40,11 +40,6 @@ const hub: [string, string, string][] = [
   ["Community", "Discuss setups, events, and technique with other racers — jump into discussions anytime.", "Connect"],
   ["Agent & Apex Pro", "Apex Agent uploads F1 25 telemetry automatically on Mac, Windows, and Linux — included with Apex Pro.", "Pro"],
 ];
-const explore: [string, string, string][] = [
-  ["Community", "Discussions on setups, events, and technique", "/community"],
-  ["Challenges", "Browse events and see who is competing", "/challenges"],
-  ["Leaderboards", "Lap times and rankings across sims", "/leaderboards"],
-];
 const pro = ["Automatic telemetry uploads", "Apex Agent access", "Full analytics & comparisons", "Future Pro-only challenges"];
 const nav: [string, string, string][] = [["", "Home", "/"], ["", "Leaderboards", "/leaderboards"], ["", "Challenges", "/challenges"], ["", "Community", "/community"], ["", "Pricing", "/pricing"]];
 
@@ -130,23 +125,6 @@ function Index() {
           ))}
         </Section>
 
-        <Section title="☰ Explore without signing in" sub="Browse community, challenges and leaderboards — create an account when you're ready to track your own data.">
-          {explore.map(([t, d, p], i) => (
-            <a key={t} href={u(p)} className="w-80 shrink-0 sm:w-auto sm:flex-1">
-              <div className="h-44 overflow-hidden rounded-md border bg-muted">
-                
-              </div>
-              <div className="mt-3 flex gap-3">
-                <span className="mt-1 h-9 w-9 shrink-0 rounded-full border-2 border-primary" />
-                <div>
-                  <div className="text-xs text-muted-foreground">Apex</div>
-                  <h3 className="font-sans font-semibold">{t}</h3>
-                  <p className="text-sm text-muted-foreground">{d}</p>
-                </div>
-              </div>
-            </a>
-          ))}
-        </Section>
 
         <section className="px-6 py-12 lg:px-8">
           <div className="mx-auto grid max-w-6xl items-center gap-10 overflow-hidden rounded-lg bg-secondary p-10 lg:grid-cols-2">
