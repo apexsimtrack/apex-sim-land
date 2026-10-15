@@ -18,9 +18,9 @@ const u = (p: string) => `${APP}${p}`;
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Apex — Sim Racing Performance Hub" },
+      { title: "Apex | Sim Racing Performance Hub" },
       { name: "description", content: "Activity feed, session stats, leaderboards, challenges and community for iRacing, F1 25 and Le Mans Ultimate. Automatic telemetry with Apex Pro." },
-      { property: "og:title", content: "Apex — Sim Racing Performance Hub" },
+      { property: "og:title", content: "Apex | Sim Racing Performance Hub" },
       { property: "og:description", content: "Centralize your sim racing data: sessions, leaderboards, challenges and community in one hub." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -36,11 +36,11 @@ const sims: { name: string; logo: string; white: boolean; plate?: boolean; big?:
   { name: "Le Mans Ultimate", logo: lmuLogo.url, white: false },
 ];
 const hub: [string, string, string][] = [
-  ["Activity feed & goals", "See your sessions and weekly targets alongside the community — your home base when you're logged in.", "Logged in"],
+  ["Activity feed & goals", "See your sessions and weekly targets alongside the community. Your home base when you're logged in.", "Logged in"],
   ["Sessions & stats", "Log performance and spot trends instead of scattering notes across spreadsheets.", "Track"],
   ["Leaderboards & challenges", "Compare laps, climb the ranks, and enter structured challenges to see where you stand.", "Compete"],
-  ["Community", "Discuss setups, events, and technique with other racers — jump into discussions anytime.", "Connect"],
-  ["Agent & Apex Pro", "Apex Agent uploads F1 25 telemetry automatically on Mac, Windows, and Linux — included with Apex Pro.", "Pro"],
+  ["Community", "Discuss setups, events, and technique with other racers and jump into discussions anytime.", "Connect"],
+  ["Agent & Apex Pro", "Apex Agent uploads F1 25 telemetry automatically on Mac, Windows, and Linux, included with Apex Pro.", "Pro"],
 ];
 const pro = ["Automatic telemetry uploads", "Apex Agent access", "Full analytics & comparisons", "Future Pro-only challenges"];
 const nav: [string, string, string][] = [["", "Home", "/"], ["", "Leaderboards", "/leaderboards"], ["", "Challenges", "/challenges"], ["", "Community", "/community"], ["", "Pricing", "/pricing"]];
@@ -94,7 +94,7 @@ function Index() {
               Welcome to<br /><span className="text-primary">Apex.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-xl text-lg text-foreground/85">
-              Your activity feed, weekly goals, sessions and stats — plus leaderboards, challenges and community. One hub for every sim you run.
+              Your activity feed, weekly goals, sessions and stats, plus leaderboards, challenges and community. One hub for every sim you run.
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-3">
               <a href={u("/signup")} className="rounded-md bg-primary px-6 py-3 font-semibold text-primary-foreground shadow-glow hover:opacity-90">Get on track</a>
@@ -133,7 +133,7 @@ function Index() {
             <div>
               <div className="text-xs font-semibold uppercase tracking-widest text-primary">Apex Pro</div>
               <h2 className="mt-2 font-sans text-2xl font-bold">Automatic telemetry. Full analytics.</h2>
-              <p className="mt-4 text-muted-foreground">Apex Agent uploads your F1 25 telemetry automatically on Mac, Windows and Linux — unlock it after you join.</p>
+              <p className="mt-4 text-muted-foreground">Apex Agent uploads your F1 25 telemetry automatically on Mac, Windows and Linux. Unlock it after you join.</p>
               <ul className="mt-5 space-y-2">
                 {pro.map((p) => <li key={p} className="flex gap-2"><span className="text-primary">✓</span>{p}</li>)}
               </ul>
@@ -169,7 +169,7 @@ function Index() {
             <div>
               <div className="text-xs font-semibold uppercase tracking-widest text-primary">Get the app</div>
               <h2 className="mt-1 font-sans text-2xl font-bold">Available on the App Store and Google Play</h2>
-              <p className="mt-2 text-muted-foreground">Take Apex with you — check your sessions, leaderboards and community on the go.</p>
+              <p className="mt-2 text-muted-foreground">Take Apex with you and check your sessions, leaderboards and community on the go.</p>
             </div>
             <div className="flex flex-wrap justify-center gap-3">
               <a href="https://apps.apple.com" target="_blank" rel="noreferrer" className="flex items-center gap-3 rounded-lg border bg-background px-5 py-2.5 hover:bg-secondary">
