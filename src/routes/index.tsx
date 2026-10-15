@@ -10,6 +10,7 @@ import lbImg from "@/assets/leaderboards-challenges.png.asset.json";
 import communityImg from "@/assets/community.png.asset.json";
 import agentImg from "@/assets/agent-pro.png.asset.json";
 import proImg from "@/assets/apex-pro-telemetry.png.asset.json";
+import hugoImg from "@/assets/hugo-cook.jpg.asset.json";
 
 const APP = "https://apexsimtracker.com";
 const u = (p: string) => `${APP}${p}`;
@@ -147,7 +148,7 @@ function Index() {
 
         <section className="px-6 py-12 lg:px-8">
           <div className="mx-auto flex max-w-6xl flex-col items-center gap-8 rounded-lg border bg-card p-10 md:flex-row">
-            <div className="flex h-28 w-28 shrink-0 items-center justify-center rounded-full border-4 border-primary bg-secondary font-display text-4xl font-black italic">HC</div>
+            <img src={hugoImg.url} alt="Hugo Cook" loading="lazy" className="h-28 w-28 shrink-0 rounded-full border-4 border-primary object-cover object-[45%_45%]" />
             <div className="flex-1 text-center md:text-left">
               <div className="text-xs font-semibold uppercase tracking-widest text-primary">The founder</div>
               <h2 className="mt-1 font-sans text-2xl font-bold">Hugo Cook</h2>
