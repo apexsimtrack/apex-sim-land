@@ -119,9 +119,9 @@ function Index() {
                 {i === 0 ? <img src={activityImg.url} alt={t} loading="lazy" className="h-full w-full object-cover" /> : <div className="h-full w-full bg-muted" />}
                 <span className="absolute left-3 top-3 rounded bg-primary px-2 py-0.5 text-[10px] font-bold uppercase text-primary-foreground">{tag}</span>
               </div>
-              <div className="px-5 pb-5">
-                <h3 className="font-sans text-lg font-semibold">{t}</h3>
-                <p className="mt-2 text-sm text-muted-foreground">{d}</p>
+              <div className="p-4">
+                <h3 className="font-sans text-base font-semibold">{t}</h3>
+                <p className="mt-1 text-sm text-muted-foreground">{d}</p>
               </div>
             </a>
           ))}
