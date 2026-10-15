@@ -9,7 +9,7 @@ import sessionsImg from "@/assets/sessions-stats.png.asset.json";
 import lbImg from "@/assets/leaderboards-challenges.png.asset.json";
 import communityImg from "@/assets/community.png.asset.json";
 import agentImg from "@/assets/agent-pro.png.asset.json";
-import proImg from "@/assets/apex-pro.png.asset.json";
+import proImg from "@/assets/apex-pro-telemetry.png.asset.json";
 
 const APP = "https://apexsimtracker.com";
 const u = (p: string) => `${APP}${p}`;
@@ -115,7 +115,7 @@ function Index() {
           {hub.map(([t, d, tag], i) => (
             <a key={t} href={u("/signup")} className="w-60 shrink-0 overflow-hidden rounded-md border bg-card">
               <div className={`relative aspect-video ${i < 5 ? "bg-card" : "bg-muted"}`}>
-                {i < 5 ? <img src={[activityImg.url, sessionsImg.url, lbImg.url, communityImg.url, agentImg.url][i]} alt={t} loading="lazy" className="h-full w-full object-cover object-top" /> : <div className="h-full w-full bg-muted" />}
+                {i < 5 ? <img src={[activityImg.url, sessionsImg.url, lbImg.url, communityImg.url, agentImg.url][i]} alt={t} loading="lazy" className="h-full w-full object-cover" /> : <div className="h-full w-full bg-muted" />}
                 <span className="absolute left-3 top-3 rounded bg-primary px-2 py-0.5 text-[10px] font-bold uppercase text-primary-foreground">{tag}</span>
               </div>
               <div className="p-4">
@@ -141,7 +141,7 @@ function Index() {
                 <a href={u("/pricing")} className="rounded-md border border-input px-5 py-2.5 font-semibold">View pricing</a>
               </div>
             </div>
-            <img src={proImg.url} alt="Apex Pro telemetry" loading="lazy" className="aspect-video w-full rounded-md border object-cover object-top" />
+            <img src={proImg.url} alt="Apex Pro telemetry" loading="lazy" className="aspect-video w-full rounded-md border object-cover" />
           </div>
         </section>
 
