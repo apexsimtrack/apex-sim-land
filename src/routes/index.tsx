@@ -9,6 +9,7 @@ import sessionsImg from "@/assets/sessions-stats.png.asset.json";
 import lbImg from "@/assets/leaderboards-challenges.png.asset.json";
 import communityImg from "@/assets/community.png.asset.json";
 import agentImg from "@/assets/agent-pro.png.asset.json";
+import proImg from "@/assets/apex-pro.png.asset.json";
 
 const APP = "https://apexsimtracker.com";
 const u = (p: string) => `${APP}${p}`;
@@ -140,7 +141,7 @@ function Index() {
                 <a href={u("/pricing")} className="rounded-md border border-input px-5 py-2.5 font-semibold">View pricing</a>
               </div>
             </div>
-            <div className="aspect-video rounded-md border bg-muted" />
+            <img src={proImg.url} alt="Apex Pro telemetry" loading="lazy" className="aspect-video w-full rounded-md border object-cover object-top" />
           </div>
         </section>
 
