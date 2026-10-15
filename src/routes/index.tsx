@@ -116,7 +116,7 @@ function Index() {
           {hub.map(([t, d, tag], i) => (
             <a key={t} href={u("/signup")} className="w-60 shrink-0 overflow-hidden rounded-md border bg-card">
               <div className={`relative aspect-video ${i === 0 ? "bg-card" : "bg-muted"}`}>
-                {i === 0 ? <img src={activityImg.url} alt={t} loading="lazy" className="h-full w-full object-cover object-top" /> : <div className="h-full w-full bg-muted" />}
+                {i === 0 ? <img src={activityImg.url} alt={t} loading="lazy" className="h-full w-full object-cover object-bottom" /> : <div className="h-full w-full bg-muted" />}
                 <span className="absolute left-3 top-3 rounded bg-primary px-2 py-0.5 text-[10px] font-bold uppercase text-primary-foreground">{tag}</span>
               </div>
               <div className="p-4">
