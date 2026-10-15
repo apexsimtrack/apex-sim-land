@@ -115,7 +115,7 @@ function Index() {
         <Section title="⚑ Everything in one hub" sub="Sign in for your activity feed, weekly goals, uploads and personalised stats.">
           {hub.map(([t, d, tag], i) => (
             <a key={t} href={u("/signup")} className="w-72 shrink-0 overflow-hidden rounded-md border bg-card">
-              <div className="relative h-44 bg-muted">
+              <div className={`relative h-44 ${i === 0 ? "bg-card" : "bg-muted"}`}>
                 {i === 0 ? <img src={activityImg.url} alt={t} loading="lazy" className="h-full w-full object-contain" /> : <div className="h-full w-full bg-muted" />}
                 <span className="absolute left-3 top-3 rounded bg-primary px-2 py-0.5 text-[10px] font-bold uppercase text-primary-foreground">{tag}</span>
               </div>
