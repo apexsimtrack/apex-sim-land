@@ -6,6 +6,7 @@ import f1Logo from "@/assets/f1-25.png.asset.json";
 import heroBg from "@/assets/hero-car.png.asset.json";
 import activityImg from "@/assets/activity-feed.png.asset.json";
 import sessionsImg from "@/assets/sessions-stats.png.asset.json";
+import lbImg from "@/assets/leaderboards-challenges.png.asset.json";
 
 const APP = "https://apexsimtracker.com";
 const u = (p: string) => `${APP}${p}`;
@@ -33,8 +34,7 @@ const sims: { name: string; logo: string; white: boolean; plate?: boolean; big?:
 const hub: [string, string, string][] = [
   ["Activity feed & goals", "See your sessions and weekly targets alongside the community — your home base when you're logged in.", "Logged in"],
   ["Sessions & stats", "Log performance and spot trends instead of scattering notes across spreadsheets.", "Track"],
-  ["Leaderboards", "Compare laps and climb the ranks — see where you stand against the field.", "Compete"],
-  ["Challenges", "Enter events, qualify, and compete in structured sim racing challenges.", "Compete"],
+  ["Leaderboards & challenges", "Compare laps, climb the ranks, and enter structured challenges to see where you stand.", "Compete"],
   ["Community", "Discuss setups, events, and technique with other racers — jump into discussions anytime.", "Connect"],
   ["Agent & Apex Pro", "Apex Agent uploads F1 25 telemetry automatically on Mac, Windows, and Linux — included with Apex Pro.", "Pro"],
 ];
@@ -116,8 +116,8 @@ function Index() {
         <Section title="⚑ Everything in one hub" sub="Sign in for your activity feed, weekly goals, uploads and personalised stats.">
           {hub.map(([t, d, tag], i) => (
             <a key={t} href={u("/signup")} className="w-60 shrink-0 overflow-hidden rounded-md border bg-card">
-              <div className={`relative aspect-video ${i < 2 ? "bg-card" : "bg-muted"}`}>
-                {i < 2 ? <img src={i === 0 ? activityImg.url : sessionsImg.url} alt={t} loading="lazy" className="h-full w-full object-cover object-top" /> : <div className="h-full w-full bg-muted" />}
+              <div className={`relative aspect-video ${i < 3 ? "bg-card" : "bg-muted"}`}>
+                {i < 3 ? <img src={[activityImg.url, sessionsImg.url, lbImg.url][i]} alt={t} loading="lazy" className="h-full w-full object-cover object-top" /> : <div className="h-full w-full bg-muted" />}
                 <span className="absolute left-3 top-3 rounded bg-primary px-2 py-0.5 text-[10px] font-bold uppercase text-primary-foreground">{tag}</span>
               </div>
               <div className="p-4">
