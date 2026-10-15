@@ -90,13 +90,13 @@ function Index() {
           </div>
           <div className="relative mx-auto max-w-3xl px-6 py-28 text-center">
             <h1 className="font-display text-5xl font-black uppercase italic leading-[0.9] sm:text-7xl">
-              Centralize your<br /><span className="text-primary">sim racing data.</span>
+              Welcome to<br /><span className="text-primary">Apex.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-xl text-lg text-foreground/85">
               Your activity feed, weekly goals, sessions and stats — plus leaderboards, challenges and community. One hub for every sim you run.
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-3">
-              <a href={u("/signup")} className="rounded-md bg-primary px-6 py-3 font-semibold text-primary-foreground shadow-glow hover:opacity-90">Sign up free</a>
+              <a href={u("/signup")} className="rounded-md bg-primary px-6 py-3 font-semibold text-primary-foreground shadow-glow hover:opacity-90">Get on track</a>
               <a href={u("/challenges")} className="rounded-md border border-input bg-background/40 px-6 py-3 font-semibold hover:bg-secondary">Explore without signing in</a>
             </div>
           </div>
