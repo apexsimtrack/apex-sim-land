@@ -5,6 +5,7 @@ import iracingLogo from "@/assets/iracing-white-figure.png.asset.json";
 import f1Logo from "@/assets/f1-25.png.asset.json";
 import heroBg from "@/assets/hero-car.png.asset.json";
 import activityImg from "@/assets/activity-feed.png.asset.json";
+import sessionsImg from "@/assets/sessions-stats.png.asset.json";
 
 const APP = "https://apexsimtracker.com";
 const u = (p: string) => `${APP}${p}`;
@@ -115,8 +116,8 @@ function Index() {
         <Section title="⚑ Everything in one hub" sub="Sign in for your activity feed, weekly goals, uploads and personalised stats.">
           {hub.map(([t, d, tag], i) => (
             <a key={t} href={u("/signup")} className="w-60 shrink-0 overflow-hidden rounded-md border bg-card">
-              <div className={`relative aspect-video ${i === 0 ? "bg-card" : "bg-muted"}`}>
-                {i === 0 ? <img src={activityImg.url} alt={t} loading="lazy" className="h-full w-full object-cover object-top" /> : <div className="h-full w-full bg-muted" />}
+              <div className={`relative aspect-video ${i < 2 ? "bg-card" : "bg-muted"}`}>
+                {i < 2 ? <img src={i === 0 ? activityImg.url : sessionsImg.url} alt={t} loading="lazy" className="h-full w-full object-cover object-top" /> : <div className="h-full w-full bg-muted" />}
                 <span className="absolute left-3 top-3 rounded bg-primary px-2 py-0.5 text-[10px] font-bold uppercase text-primary-foreground">{tag}</span>
               </div>
               <div className="p-4">
