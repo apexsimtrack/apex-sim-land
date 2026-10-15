@@ -185,12 +185,12 @@ function Index() {
         </section>
 
         <section className="px-6 py-12 lg:px-8">
-          <div className="mx-auto max-w-6xl rounded-lg bg-primary p-12 text-center text-primary-foreground">
-            <h2 className="font-display text-4xl font-black uppercase italic sm:text-5xl">Ready to start your Apex journey?</h2>
-            <p className="mx-auto mt-3 max-w-md opacity-90">Join Apex and turn scattered sessions into a clear picture of your pace.</p>
+          <div className="mx-auto max-w-6xl rounded-lg border bg-background p-12 text-center">
+            <h2 className="font-display text-4xl font-black uppercase italic sm:text-5xl">Ready to start your <span className="text-primary">Apex</span> journey?</h2>
+            <p className="mx-auto mt-3 max-w-md text-muted-foreground">Join Apex and turn scattered sessions into a clear picture of your pace.</p>
             <div className="mt-8 flex flex-wrap justify-center gap-3">
-              <a href={u("/signup")} className="rounded-md bg-background px-6 py-3 font-semibold text-foreground">Sign up free</a>
-              <a href={u("/faq")} className="rounded-md border border-primary-foreground/40 px-6 py-3 font-semibold">Read the FAQ</a>
+              <a href={u("/signup")} className="rounded-md bg-primary px-6 py-3 font-semibold text-primary-foreground">Sign up free</a>
+              <a href={u("/faq")} className="rounded-md border border-input px-6 py-3 font-semibold">Read the FAQ</a>
             </div>
           </div>
         </section>
