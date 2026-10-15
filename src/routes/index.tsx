@@ -165,7 +165,7 @@ function Index() {
 
         <section className="px-6 py-12 lg:px-8">
           <div className="mx-auto max-w-6xl rounded-lg bg-primary p-12 text-center text-primary-foreground">
-            <h2 className="font-display text-4xl font-black uppercase italic sm:text-5xl">Ready to centralize your sim racing data?</h2>
+            <h2 className="font-display text-4xl font-black uppercase italic sm:text-5xl">Ready to start your Apex journey?</h2>
             <p className="mx-auto mt-3 max-w-md opacity-90">Join Apex and turn scattered sessions into a clear picture of your pace.</p>
             <div className="mt-8 flex flex-wrap justify-center gap-3">
               <a href={u("/signup")} className="rounded-md bg-background px-6 py-3 font-semibold text-foreground">Sign up free</a>
